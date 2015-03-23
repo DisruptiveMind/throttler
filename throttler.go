@@ -12,8 +12,8 @@ type throttler struct {
 // ServeHTTP implements the http.Handler interface.
 func (t *throttler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	t.limit <- struct{}{}
+	defer func() { <-t.limit }()
 	t.h.ServeHTTP(w, r)
-	<-t.limit
 }
 
 // Limit create new throttler middleware with a specified limit.
