@@ -7,8 +7,9 @@
 ## Usage
 
 1. [Goji](#goji)
-2. [DefaultServeMux (net/http)](#defaultservemux-nethttp)
-3. ...don't see your favorite router/framework? We accept [Pull Requests](https://github.com/goware/throttler/pulls)!
+2. [Interpose](#interpose)
+3. [DefaultServeMux (net/http)](#defaultservemux-nethttp)
+4. ...don't see your favorite router/framework? We accept [Pull Requests](https://github.com/goware/throttler/pulls)!
 
 ### [Goji](https://github.com/zenazn/goji)
 
@@ -23,6 +24,16 @@ admin.Get("/*", handler)
 ```
 
 See [full example](./example/goji/main.go).
+
+### [Interpose](https://github.com/carbocation/interpose)
+
+```go
+// Limit to 5 requests globally.
+middle := interpose.New()
+middle.Use(throttler.Limit(5))
+```
+
+See [full example](./example/interpose/main.go).
 
 ### [DefaultServeMux (net/http)](http://golang.org/pkg/net/http/#ServeMux)
 
