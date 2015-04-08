@@ -8,8 +8,9 @@
 
 1. [Goji](#goji)
 2. [Interpose](#interpose)
-3. [DefaultServeMux (net/http)](#defaultservemux-nethttp)
-4. ...don't see your favorite router/framework? We accept [Pull Requests](https://github.com/goware/throttler/pulls)!
+3. [Alice](#alice)
+4. [DefaultServeMux (net/http)](#defaultservemux-nethttp)
+5. ...don't see your favorite router/framework? We accept [Pull Requests](https://github.com/goware/throttler/pulls)!
 
 ### [Goji](https://github.com/zenazn/goji)
 
@@ -34,6 +35,16 @@ middle.Use(throttler.Limit(5))
 ```
 
 See [full example](./example/interpose/main.go).
+
+### [Alice](https://github.com/justinas/alice)
+
+```go
+// Limit to 5 requests globally.
+handlerFunc := http.HandlerFunc(handler)
+chain := alice.New(throttler.Limit(5)).Then(handlerFunc)
+```
+
+See [full example](./example/alice/main.go).
 
 ### [DefaultServeMux (net/http)](http://golang.org/pkg/net/http/#ServeMux)
 
