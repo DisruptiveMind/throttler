@@ -41,7 +41,6 @@ See [full example](./example/interpose/main.go).
 
 ```go
 // Limit to 5 requests globally.
-handlerFunc := http.HandlerFunc(handler)
 chain := alice.New(throttler.Limit(5)).Then(handlerFunc)
 ```
 
@@ -65,7 +64,6 @@ See [full example](./example/gorilla/main.go).
 ```go
 // Limit to 5 requests globally.
 limit := throttler.Limit(5)
-handlerFunc := http.HandlerFunc(handler)
 http.Handle("/", limit(handlerFunc))
 
 ```
