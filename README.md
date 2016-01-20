@@ -26,7 +26,7 @@ admin.Use(throttler.Limit(2))
 admin.Get("/*", handler)
 ```
 
-See [full example](./example/goji/main.go).
+See [full example](./_examples/goji/main.go).
 
 ### [Interpose](https://github.com/carbocation/interpose)
 
@@ -36,7 +36,7 @@ middle := interpose.New()
 middle.Use(throttler.Limit(5))
 ```
 
-See [full example](./example/interpose/main.go).
+See [full example](./_examples/interpose/main.go).
 
 ### [Alice](https://github.com/justinas/alice)
 
@@ -45,7 +45,7 @@ See [full example](./example/interpose/main.go).
 chain := alice.New(throttler.Limit(5)).Then(handlerFunc)
 ```
 
-See [full example](./example/alice/main.go).
+See [full example](./_examples/alice/main.go).
 
 ### [Gorilla/mux](https://github.com/gorilla/mux)
 
@@ -58,7 +58,7 @@ limit := throttler.Limit(5)
 http.Handle("/", limit(r))
 ```
 
-See [full example](./example/gorilla/main.go).
+See [full example](./_examples/gorilla/main.go).
 
 ### [DefaultServeMux (net/http)](http://golang.org/pkg/net/http/#ServeMux)
 
@@ -69,7 +69,7 @@ http.Handle("/", limit(handlerFunc))
 
 ```
 
-See [full example](./example/mux/main.go).
+See [full example](./_examples/mux/main.go).
 
 ### [Chi](https://github.com/pressly/chi)
 
@@ -85,7 +85,7 @@ admin := chi.NewRouter()
 admin.Use(throttler.Limit(2))
 ```
 
-See [full example](./example/chi/main.go).
+See [full example](./_examples/chi/main.go).
 
 ## License
 Throttler is licensed under the [MIT License](./LICENSE).
