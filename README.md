@@ -11,7 +11,8 @@
 3. [Alice](#alice)
 4. [Gorilla/mux](#gorillamux)
 5. [DefaultServeMux (net/http)](#defaultservemux-nethttp)
-6. ...don't see your favorite router/framework? We accept [Pull Requests](https://github.com/goware/throttler/pulls)!
+6. [Chi](#chi)
+7. ...don't see your favorite router/framework? We accept [Pull Requests](https://github.com/goware/throttler/pulls)!
 
 ### [Goji](https://github.com/zenazn/goji)
 
@@ -69,6 +70,22 @@ http.Handle("/", limit(handlerFunc))
 ```
 
 See [full example](./example/mux/main.go).
+
+### [Chi](https://github.com/pressly/chi)
+
+```go
+r := chi.NewRouter()
+
+// Limit to 5 requests globally.
+r.Use(throttler.Limit(5))
+r.Get("/*", handler)
+
+// Limit to 2 requests for admin sub-router
+admin := chi.NewRouter()
+admin.Use(throttler.Limit(2))
+```
+
+See [full example](./example/chi/main.go).
 
 ## License
 Throttler is licensed under the [MIT License](./LICENSE).
